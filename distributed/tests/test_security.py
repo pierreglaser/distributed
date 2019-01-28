@@ -269,11 +269,12 @@ def test_listen_args():
     basic_checks(ctx)
     if sys.version_info >= (3, 6):
         supported_ciphers = ctx.get_ciphers()
+        tls_protocols = [sc['protocol'] for sc in supported_ciphers]
         tls_12_ciphers = [c for c in supported_ciphers if c['protocol'] == 'TLSv1.2']
-        assert len(tls_12_ciphers) == 1
+        assert len(tls_12_ciphers) == 1, tls_protocols
         tls_13_ciphers = [c for c in supported_ciphers if c['protocol'] == 'TLSv1.3']
         if len(tls_13_ciphers):
-            assert len(tls_13_ciphers) == 3
+            assert len(tls_13_ciphers) == 3, tls_protocols
 
 
 @gen_test()
