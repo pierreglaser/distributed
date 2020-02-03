@@ -132,7 +132,7 @@ def get_fileno_limit():
 def _get_ip(host, port, family):
     # By using a UDP socket, we don't actually try to connect but
     # simply select the local address through which *host* is reachable.
-    sock = socket.socket(family, socket.SOCK_DGRAM)
+    sock = socket.socket(family, socket.SOCK_STREAM)
     try:
         sock.connect((host, port))
         ip = sock.getsockname()[0]
