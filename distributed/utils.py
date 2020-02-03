@@ -148,8 +148,11 @@ def _get_ip(host, port, family):
             socket.gethostname(), port, family, socket.SOCK_DGRAM, socket.IPPROTO_UDP
         )
         sys.stderr.write(f'addrs: {addrs}\n')
+        sys.stderr.write(f'hostname: {socket.gethostname()}\n')
         addr_info = addrs[0]
-        return addr_info[4][0]
+        # return addr_info[4][0]
+        return socket.gethostname()
+
     finally:
         sock.close()
 
