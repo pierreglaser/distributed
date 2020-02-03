@@ -222,6 +222,8 @@ async def connect(addr, timeout=None, deserialize=True, connection_args=None):
             raise
         except EnvironmentError as e:
             error = str(e)
+            import traceback
+            traceback.print_exc()
             if time() < deadline:
                 await asyncio.sleep(0.01)
                 logger.debug("sleeping on connect")
