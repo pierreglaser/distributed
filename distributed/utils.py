@@ -144,9 +144,11 @@ def _get_ip(host, port, family):
             "reaching %r, defaulting to hostname: %s" % (host, e),
             RuntimeWarning,
         )
-        addr_info = socket.getaddrinfo(
+        addrs = socket.getaddrinfo(
             socket.gethostname(), port, family, socket.SOCK_DGRAM, socket.IPPROTO_UDP
-        )[0]
+        )
+        sys.stderr.write(f'addrs: {addrs}\n')
+        addr_info = addrs[0]
         return addr_info[4][0]
     finally:
         sock.close()
