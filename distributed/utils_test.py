@@ -1147,7 +1147,7 @@ async def assert_can_connect_from_everywhere_4_6(
     if has_ipv6():
         futures += [
             assert_can_connect("%s://[::1]:%d" % (protocol, port), *args),
-            assert_can_connect("%s://[%s]:%d" % (protocol, get_ipv6(), port), *args),
+            assert_can_connect("%s://[%s]:%d" % (protocol, get_ipv6(port=port), port), *args),
         ]
     await asyncio.gather(*futures)
 
