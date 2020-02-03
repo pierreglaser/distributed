@@ -345,6 +345,12 @@ class BaseTCPConnector(Connector, RequireEncryptionMixin):
         kwargs = self._get_connect_args(**connection_args)
 
         try:
+
+            import sys
+            sys.stderr.write(f'ip: {ip}\n')
+            sys.stderr.write(f'port: {port}\n')
+            sys.stderr.write(f'kws: {kwargs}\n')
+
             stream = await self.client.connect(
                 ip, port, max_buffer_size=MAX_BUFFER_SIZE, **kwargs
             )
