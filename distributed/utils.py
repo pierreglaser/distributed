@@ -145,13 +145,13 @@ def _get_ip(host, port, family):
             RuntimeWarning,
         )
         addrs = socket.getaddrinfo(
-            socket.gethostname(), port, family, socket.SOCK_DGRAM, socket.IPPROTO_UDP
+            socket.gethostname(), port, family, socket.SOCK_STREAM, socket.IPPROTO_TCP
         )
         sys.stderr.write(f'addrs: {addrs}\n')
         sys.stderr.write(f'hostname: {socket.gethostname()}\n')
         addr_info = addrs[0]
-        # return addr_info[4][0]
-        return socket.gethostname()
+        # return socket.gethostname()
+        return addr_info[4][0]
 
     finally:
         sock.close()
