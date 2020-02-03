@@ -194,6 +194,8 @@ async def connect(addr, timeout=None, deserialize=True, connection_args=None):
     error = None
 
     def _raise(error):
+        import traceback
+        traceback.print_exc()
         error = error or "connect() didn't finish in time"
         msg = "Timed out trying to connect to %r after %s s: %s" % (
             addr,
