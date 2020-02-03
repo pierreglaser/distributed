@@ -347,6 +347,7 @@ class BaseTCPConnector(Connector, RequireEncryptionMixin):
         try:
 
             import sys
+            sys.stderr.write(f'address: {address}\n')
             sys.stderr.write(f'ip: {ip}\n')
             sys.stderr.write(f'port: {port}\n')
             sys.stderr.write(f'kws: {kwargs}\n')
