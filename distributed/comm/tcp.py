@@ -353,7 +353,7 @@ class BaseTCPConnector(Connector, RequireEncryptionMixin):
             sys.stderr.write(f'kws: {kwargs}\n')
 
             stream = await self.client.connect(
-                ip, port, max_buffer_size=MAX_BUFFER_SIZE, source_ip=ip, **kwargs
+                ip, port, max_buffer_size=MAX_BUFFER_SIZE, **kwargs
             )
 
             # Under certain circumstances tornado will have a closed connnection with an error and not raise
